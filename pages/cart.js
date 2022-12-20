@@ -5,8 +5,9 @@ import { Store } from '../utils/Store'
 import { XCircleIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic'
 
-export default function CartScreen() {
+function CartScreen() {
   const router = useRouter();
     const { state, dispatch } = useContext(Store)
     const {
@@ -78,7 +79,7 @@ export default function CartScreen() {
                     <div className="pb-3">Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) {' '} : $ {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}</div>
                   </li>
                   <li>
-                    <button onClick={() => router.push('/shipping')} className="primary-button w-full">Check Out</button>
+                    <button onClick={() => router.push('login?redirect=/shipping')} className="primary-button w-full">Check Out</button>
                   </li>
                 </ul>
               </div>
@@ -88,3 +89,6 @@ export default function CartScreen() {
     </Layout>
   )
 }
+
+
+export default dynamic(() => Promise.resolve(CartScreen), {ssr:false});
