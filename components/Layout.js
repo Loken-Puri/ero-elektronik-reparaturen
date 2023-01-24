@@ -50,7 +50,7 @@ export default function Layout({title, children}) {
             <header>
                 <nav className="flex h-12 items-center px-4 justify-between shadow-md">
                     <Link href="/" className='text-lg font-bold text-green-900 w-64'>
-                        ERO ELEKTRONIK
+                        ONLINE SHOPPING
                     </Link>
 
                     {/* ---------- Search box starts ----------*/}
